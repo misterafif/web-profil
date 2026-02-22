@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Minimalist mas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .mas-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .mas-card:hover { transform: translateY(-4px); }
+        
+        /* Custom scrollbar untuk tampilan lebih bersih */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: #cbd5e1; 
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb { background: #265598; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-4 md:p-8 transition-colors duration-300">
+
+    <div id="main-content" class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 opacity-0 translate-y-10 transition-all duration-1000">
+        
+        <!-- Profile Card -->
+        <div class="md:col-span-2 md:row-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-center shadow-sm mas-card">
+            <div class="w-16 h-16 bg-blue-600 rounded-2xl mb-6 flex items-center justify-center text-white shadow-lg shadow-blue-600/30">
+                <i data-lucide="user" size="32"></i>
+            </div>
+            <h1 class="text-4xl font-bold tracking-tight mb-2">Halo, Saya <span class="text-blue-600" id="display-name">Nama Kamu</span></h1>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-6" id="display-bio">
+                Seorang Developer yang berpengalaman dalam desain grafis dan pengembangan sistem game server.
+            </p>
+            <div class="flex gap-4">
+                <a id="link-ig" href="#" target="_blank" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:scale-110 transition-transform text-pink-600">
+                    <i data-lucide="instagram" size="20"></i>
+                </a>
+                <a id="link-wa" href="#" target="_blank" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:scale-110 transition-transform text-green-600">
+                    <i data-lucide="message-circle" size="20"></i>
+                </a>
+                <a id="link-mail" href="#" class="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl hover:scale-110 transition-transform text-blue-600">
+                    <i data-lucide="mail" size="20"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Skills Card -->
+        <div class="md:col-span-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm mas-card">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="terminal" size="20" class="text-blue-600"></i> Keahlian Utama
+            </h2>
+            <div id="skills-container" class="flex flex-wrap gap-2">
+                <!-- Skills akan diisi oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- Status Card -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm flex flex-col justify-center items-center text-center mas-card">
+            <div class="relative mb-2">
+                <div class="absolute inset-0 bg-green-500 blur-md opacity-40 animate-pulse"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full relative"></div>
+            </div>
+            <p class="text-sm text-slate-500 font-medium">Tersedia untuk</p>
+            <p class="text-lg font-bold">Kerja Lepas</p>
+        </div>
+
+        <!-- Location Card -->
+        <a id="link-gmaps" href="#" target="_blank" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm flex flex-col justify-center items-center text-center mas-card hover:bg-slate-50 dark:hover:bg-slate-800 group transition-colors">
+            <i data-lucide="globe" size="24" class="mb-2 text-slate-400 group-hover:text-blue-600"></i>
+            <p class="text-sm text-slate-500 font-medium">Lokasi</p>
+            <p class="text-lg font-bold">Indonesia</p>
+        </a>
+
+        <!-- Project Title -->
+        <div class="md:col-span-4 mt-4 mb-2">
+            <h2 class="text-2xl font-bold flex items-center gap-2 px-2">
+                <i data-lucide="palette" size="24" class="text-blue-600"></i> Proyek Terpilih
+            </h2>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div id="projects-grid" class="md:col-span-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Kartu proyek akan dibuat oleh JavaScript -->
+        </div>
+
+        <!-- Footer Card -->
+        <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-8 flex flex-col md:flex-row justify-between items-center gap-6 mt-4">
+            <div>
+                <h2 class="text-2xl font-bold mb-2">Punya ide proyek?</h2>
+                <p class="text-slate-400">Mari kolaborasi untuk hasil yang maksimal.</p>
+            </div>
+            <a id="footer-wa" href="#" target="_blank" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl font-bold transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20">
+                Hubungi Saya
+            </a>
+        </div>
+
+        <p class="md:col-span-4 text-center mt-8 text-slate-400 text-sm">
+            &copy; <span id="year"></span> <span id="footer-name"></span> • Dibuat dengan 💖
+        </p>
+    </div>
+
+    <script>
+        // --- KONFIGURASI DATA ---
+        // Silakan ubah bagian ini untuk mengganti konten website kamu
+        const config = {
+            name: "Mas Pip",
+            bio: "Developer yang berpengalaman dalam desain grafis dan pengembangan sistem game server.",
+            whatsapp: "6282230547948", // Format: 628xxx (tanpa +)
+            instagram: "__afif.w", // Hanya username
+            email: "m.afif0307@gmail.com",
+            gmaps: "https://maps.app.goo.gl/c5KQvBNZC8pRq5Gu7", // Link Google Maps kamu
+            skills: ["CorelDraw", "WebDev", "SAMP Dev"],
+            projects: [
+                { 
+                    title: "Desain Grafis Professional", 
+                    desc: "Kumpulan aset visual dan logo yang dikerjakan menggunakan CorelDraw.", 
+                    tag: "CorelDraw",
+                    link: "https://www.instagram.com/_djember/" // Link tujuan (Drive/YT/TikTok)
+                },
+                { 
+                    title: "SAMP Server Script", 
+                    desc: "Pengembangan gamemode custom untuk server San Andreas Multiplayer <em>my project</em>.", 
+                    tag: "SAMP Dev",
+                    link: "https://discord.gg/DG3ux5Pq" 
+                },
+                { 
+                    title: "Website Portfolio Modern", 
+                    desc: "Membangun antarmuka web responsif dan interaktif.", 
+                    tag: "WebDev",
+                    link: ".."
+                }
+            ]
+        };
+
+        // --- LOGIKA RENDER ---
+        window.onload = () => {
+            // Update Teks Dasar
+            document.getElementById('display-name').innerText = config.name;
+            document.getElementById('footer-name').innerText = config.name;
+            document.getElementById('display-bio').innerText = config.bio;
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Update Link Sosial Media & Kontak
+            document.getElementById('link-ig').href = `https://www.instagram.com/${config.instagram}`;
+            document.getElementById('link-wa').href = `https://wa.me/${config.whatsapp}`;
+            document.getElementById('footer-wa').href = `https://wa.me/${config.whatsapp}`;
+            document.getElementById('link-mail').href = `mailto:${config.email}`;
+            document.getElementById('link-gmaps').href = config.gmaps;
+
+            // Render Daftar Keahlian (Skills)
+            const skillsContainer = document.getElementById('skills-container');
+            config.skills.forEach(skill => {
+                const span = document.createElement('span');
+                span.className = "px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-full text-sm font-bold border border-blue-100 dark:border-blue-900/30";
+                span.innerText = skill;
+                skillsContainer.appendChild(span);
+            });
+
+            // Render Daftar Proyek
+            const projectsGrid = document.getElementById('projects-grid');
+            config.projects.forEach((project, idx) => {
+                const card = document.createElement('div');
+                // Kartu pertama dibuat lebih lebar di tampilan desktop
+                const colSpan = idx === 0 ? 'md:col-span-2' : '';
+                card.className = `group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm mas-card cursor-pointer transition-all ${colSpan}`;
+                
+                // Event klik untuk membuka link proyek
+                card.onclick = () => {
+                    if (project.link && project.link !== "#") {
+                        window.open(project.link, '_blank');
+                    }
+                };
+                
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-lg">
+                            ${project.tag}
+                        </span>
+                        <div class="p-2 bg-slate-50 dark:bg-slate-800 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm">
+                            <i data-lucide="external-link" size="18"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">${project.title}</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        ${project.desc}
+                    </p>
+                    <div class="flex items-center gap-1 text-xs font-medium text-slate-400 italic">
+                        <span>Lihat detail proyek</span>
+                        <i data-lucide="chevron-right" size="14"></i>
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+
+            // Inisialisasi ulang ikon Lucide agar muncul
+            lucide.createIcons();
+
+            // Animasi kemunculan konten (Fade In & Slide Up)
+            setTimeout(() => {
+                document.getElementById('main-content').classList.remove('opacity-0', 'translate-y-10');
+            }, 100);
+        };
+    </script>
+</body>
+</html>
